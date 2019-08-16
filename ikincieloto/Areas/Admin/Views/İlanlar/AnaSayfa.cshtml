@@ -1,0 +1,84 @@
+﻿@using GridMvc.Html
+@model ikincieloto.Areas.Admin.ViewModels.Adminİlanlar
+@{
+    ViewBag.Title = "AnaSayfa";
+    Layout = "~/Areas/Admin/Views/Shared/AdminNav.cshtml";
+}
+
+<h2>İlan Listesi</h2>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Gridmvc.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+<script src="~/Scripts/gridmvc.min.js"></script>
+<script src="~/Scripts/gridmvc.lang.tr.js"></script>
+
+
+<div align="center" style="margin-top:6%; margin-left:17%; width:60%;">
+
+
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Marka</td>
+                <td>Modeli</td>
+                <td>Yıl</td>
+                <td>Fiyat</td>
+                <td>Kilometre</td>
+                <td>Yakıt</td>
+                <td>Renk</td>
+                <td>Vites</td>
+                <td>İlan Tarihi</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ilan in Model.İlanlar)
+            {
+                <tr>
+                    <td>@ilan.Marka</td>
+                    <td>@ilan.Modeli</td>
+                    <td>@ilan.Yıl</td>
+                    <td>@ilan.Fiyat</td>
+                    <td>@ilan.Kilometre</td>
+                    <td>@ilan.Yakıt</td>
+                    <td>@ilan.Renk</td>
+                    <td>@ilan.Vites</td>
+                    <td>@ilan.ilantarihi.ToString("dd.MM.yyyy")</td>
+                    
+                    <td>
+                        <div class="btn-group">
+                            <a href="@Url.Action("ilan_edit",new {ilan.id})" , class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i>Düzenle</a>
+                            <a href="@Url.Action("ilan_sil",new { ilan.id})" , class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i>Sil</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+ 
+
+
+
+</div>
+
+<style>
+    .detaybutton {
+     
+    }
+
+    .deletbut {
+        display: table-cell;
+        vertical-align: middle;
+        padding: 7px 16px;
+    }
+    tr td:first-child {
+        padding-left: 0px;
+    }
+
+    td {
+        padding: 10px 0px 10px 50px;
+    }
+ 
+</style>

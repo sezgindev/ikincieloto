@@ -1,0 +1,47 @@
+﻿body {
+    background: url('../Images/sezginindenbackground.png') no-repeat center center fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+form {
+    margin-left:29%;
+    margin-top:10%;
+    border: 3px solid #f1f1f1;
+    width:40%;
+}
+.center{
+    margin-left:10%;
+
+
+}
+.center2{
+    margin-left:20%;
+}
+
+
+.button {
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    padding: 1%;
+    width: 20%;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-left:30%;
+    margin-top:2%;
+    margin-bottom:2%;
+}
+.containers {
+    padding-right:5%;
+
+}
+.form-horizontal {
+    border: 1px solid #F9F2F2;
+    -webkit-box-shadow: 0px 0px 18px 4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 18px 4px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 18px 4px rgba(0,0,0,0.75
+}

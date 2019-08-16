@@ -1,0 +1,71 @@
+﻿@using GridMvc.Html
+@model ikincieloto.Areas.ViewModels.User
+@{
+    ViewBag.Title = "Kullanıcılar";
+    Layout = "~/Areas/Admin/Views/Shared/AdminNav.cshtml";
+    
+}
+
+<h2>Kullanıcılar</h2>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Gridmvc.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+<script src="~/Scripts/gridmvc.min.js"></script>
+<script src="~/Scripts/gridmvc.lang.tr.js"></script>
+
+
+<div style="width:60%; margin:5% 18%;">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Ad</td>
+                <td>Soyad</td>
+                <td>Kullanıcı Adı</td>
+                <td>Email</td>
+                <td>Rol</td>
+                <td>Düzenleme</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Kullanıcılar)
+            {
+                <tr>
+                    <td>@user.id</td>
+                    <td>@user.Ad</td>
+                    <td>@user.Soyad</td>
+                    <td>@user.KullanıcıAdı</td>
+                    <td>@user.Eposta</td>
+                    <td>@String.Join(", ", user.Roles.Select(p => p.RolAdı))</td>
+                    <td>
+                        <div class="btn-group">
+                            <a href="@Url.Action("kullanıcı_edit",new {user.id})" , class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i>Düzenle</a>                           
+                            <a href="@Url.Action("kullanıcı_sil",new { user.id})" , data-post="@user.KullanıcıAdı kullanıcısı silinsin mi?" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i>Sil</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+
+
+</div>
+<style>
+    .deletebut {
+        display: table-cell;
+        vertical-align: middle;
+        padding: 2px 16px;
+    }
+    .editbut {
+        display: table-cell;
+        vertical-align: middle;
+        padding: 7px 16px;
+    }
+
+    
+</style>

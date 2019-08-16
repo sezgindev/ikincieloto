@@ -1,0 +1,103 @@
+﻿@using ikincieloto.Models
+@{
+    var gelen =(İlan)ViewData["deneme"];
+    var gelen2 =(Kullanıcı)ViewData["deneme2"];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/DetaylıİlanTablo.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Detayli_İlan</title>
+</head>
+<body>
+    <div class="liste ">
+        <ul class="list-group list-group-flush">
+
+            <li class="list-group-item list-group-item-info">
+
+                <strong>Marka</strong>&nbsp;
+
+                <span id="classifiedId">  @gelen.Marka</span>
+            </li>
+
+            <li class="list-group-item list-group-item-info">
+                <strong>Model</strong>&nbsp;
+                <span id="classifiedId">  @gelen.Modeli</span>
+            </li>
+            <li class="list-group-item list-group-item-info">
+                <strong>Yıl</strong>&nbsp;
+                <span id="classifiedId">  @gelen.Yıl</span>
+            </li>
+
+            <li class="list-group-item list-group-item-info">
+                <strong>Fiyat</strong>&nbsp;
+                <span id="classifiedId">  @gelen.Fiyat</span>
+            </li>
+
+            <li class="list-group-item list-group-item-info">
+                <strong>Kilometre</strong>&nbsp;
+                <span id="classifiedId">  @gelen.Kilometre</span>
+            </li>
+
+            <li class="list-group-item list-group-item-info">
+                <strong>Yakıt</strong>&nbsp;
+                <span id="classifiedId"> @gelen.Yakıt</span>
+            </li>
+
+            <li class="list-group-item list-group-item-info">
+                <strong>Renk</strong>&nbsp;
+                <span id="classifiedId">  @gelen.Renk</span>
+            </li>
+
+            <li class="list-group-item list-group-item-info">
+                <strong>Vites</strong>&nbsp;
+
+                <span id="classifiedId">  @gelen.Vites</span>
+            </li>
+
+            <li class="list-group-item list-group-item-info">
+                <strong>İlan Tarihi</strong>&nbsp;
+                <span id="classifiedId">  @gelen.ilantarihi.ToString("dd.MM.yyyy")</span>
+            </li>
+
+            <li class="list-group-item list-group-item-info">
+                <strong> E-posta</strong>&nbsp;
+                <span id="classifiedId">  @gelen.Eposta</span>
+            </li>
+            <li class="list-group-item list-group-item-info">
+                <strong>Telefon</strong>&nbsp;
+                <span id="classifiedId">  @gelen.telefon</span>
+            </li>
+
+
+        </ul>
+        <img class="denes" src="~/UploadImages/@gelen.imagepath" />
+      <h4  class="acıklama">@gelen.Açıklama</h4>
+    </div>
+    
+</body>
+</html>
+
+<style>
+    .denes {
+        position: absolute;
+        top:27%;
+        right:20%;
+        width: 35%;
+        height: 50%;
+
+     
+    }
+    .acıklama {
+        position: absolute;
+        top: 10%;
+        left: 2%;
+        width: 40%;
+        color:cornflowerblue;
+    }
+  
+</style>

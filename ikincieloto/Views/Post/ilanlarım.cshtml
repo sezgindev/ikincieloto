@@ -1,0 +1,76 @@
+﻿@using ikincieloto.Models
+
+@model ikincieloto.ViewModels.İlanlarList
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+  
+
+
+}
+<link href="~/Content/loginstye.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h2>İlanlarım</h2>
+
+<table class="table" style="width:60%;" align="center">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th> Marka</th>
+            <th>Model</th>
+            <th>Yıl</th>
+            <th>Fiyat</th>
+            <th>Kilometre</th>
+            <th>Yakıt</th>
+            <th>Renk</th>
+            <th>Vites</th>
+            <th>İlan Tarihi</th>
+            <th>Fotoğraf</th>
+
+        </tr>
+    </thead>
+
+    @foreach (var ilanlar in Model.İlanlar)
+    {
+
+        if (ilanlar.kullanıcıilanı == User.Identity.Name)
+        {
+
+
+
+            <tbody>
+                <tr class="table">
+                    <td><a href="/Post/Detayli_İlan/@ilanlar.id"   class='btn btn-warning'><span class='glyphicon glyphicon-align-justify'></span>  İlan Detayı</a></td>
+                    <td><a a href="/Post/ilan_sil/@ilanlar.id" class='btn btn-danger deletebut'><span class='glyphicon glyphicon-trash'></span></a> </td>
+                    <td><a href='/Post/ilan_edit/@ilanlar.id' class='btn btn-warning editbut'><span class='glyphicon glyphicon-edit'></span></a></td>
+
+                    <td>@ilanlar.Marka</td>
+                    <td>@ilanlar.Modeli</td>
+                    <td>@ilanlar.Yıl</td>
+                    <td>@ilanlar.Fiyat</td>
+                    <td>@ilanlar.Kilometre</td>
+                    <td>@ilanlar.Yakıt</td>
+                    <td>@ilanlar.Renk</td>
+                    <td>@ilanlar.Vites</td>
+                    <td>@ilanlar.ilantarihi.ToString("dd.MM.yyyy")</td>
+                    <td><img src="~/UploadImages/@ilanlar.imagepath" style="width:55%;height:10%;" /></td>
+
+                </tr>
+            </tbody>
+
+        }
+
+    }
+</table>
+<style>
+    tr td:first-child {
+        padding-left: 0px;
+    }
+
+    td {
+        padding: 10px 0px 10px 50px;
+    }
+</style>

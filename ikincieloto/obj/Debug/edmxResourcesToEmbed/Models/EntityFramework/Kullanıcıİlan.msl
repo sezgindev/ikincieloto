@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ikincielotoModelStoreContainer" CdmEntityContainer="ikincielotoEntities">
+    <EntitySetMapping Name="İlanlar">
+      <EntityTypeMapping TypeName="ikincielotoModel.İlanlar">
+        <MappingFragment StoreEntitySet="İlanlar">
+          <ScalarProperty Name="İlanID" ColumnName="İlanID" />
+          <ScalarProperty Name="Marka" ColumnName="Marka" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Yıl" ColumnName="Yıl" />
+          <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+          <ScalarProperty Name="KM" ColumnName="KM" />
+          <ScalarProperty Name="Yakıt" ColumnName="Yakıt" />
+          <ScalarProperty Name="Renk" ColumnName="Renk" />
+          <ScalarProperty Name="İlan_Tarihi" ColumnName="İlan Tarihi" />
+          <ScalarProperty Name="Vites" ColumnName="Vites" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kullanıcılar">
+      <EntityTypeMapping TypeName="ikincielotoModel.Kullanıcılar">
+        <MappingFragment StoreEntitySet="Kullanıcılar">
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="KullanıcıAdı" ColumnName="KullanıcıAdı" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Şifre" ColumnName="Şifre" />
+          <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Kullanıcı_ilan" TypeName="ikincielotoModel.Kullanıcı_ilan" StoreEntitySet="Kullanıcı_ilan">
+      <EndProperty Name="İlanlar">
+        <ScalarProperty Name="İlanID" ColumnName="İlanID" />
+      </EndProperty>
+      <EndProperty Name="Kullanıcılar">
+        <ScalarProperty Name="KullanıcıAdı" ColumnName="KullanıcıAdı" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

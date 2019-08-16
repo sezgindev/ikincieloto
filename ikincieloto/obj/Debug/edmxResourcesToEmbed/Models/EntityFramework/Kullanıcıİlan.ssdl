@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ikincielotoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="İlanlar">
+    <Key>
+      <PropertyRef Name="İlanID" />
+    </Key>
+    <Property Name="İlanID" Type="int" Nullable="false" />
+    <Property Name="Marka" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Yıl" Type="int" Nullable="false" />
+    <Property Name="Fiyat" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="KM" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Yakıt" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Renk" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="İlan Tarihi" Type="datetime" Nullable="false" />
+    <Property Name="Vites" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kullanıcı_ilan">
+    <Key>
+      <PropertyRef Name="KullanıcıAdı" />
+      <PropertyRef Name="İlanID" />
+    </Key>
+    <Property Name="KullanıcıAdı" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="İlanID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kullanıcılar">
+    <Key>
+      <PropertyRef Name="KullanıcıAdı" />
+    </Key>
+    <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="KullanıcıAdı" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Şifre" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Cinsiyet" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Kullanıcı_ilan_İlanlar">
+    <End Role="İlanlar" Type="Self.İlanlar" Multiplicity="1" />
+    <End Role="Kullanıcı_ilan" Type="Self.Kullanıcı_ilan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="İlanlar">
+        <PropertyRef Name="İlanID" />
+      </Principal>
+      <Dependent Role="Kullanıcı_ilan">
+        <PropertyRef Name="İlanID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kullanıcı_ilan_Kullanıcılar">
+    <End Role="Kullanıcılar" Type="Self.Kullanıcılar" Multiplicity="1" />
+    <End Role="Kullanıcı_ilan" Type="Self.Kullanıcı_ilan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanıcılar">
+        <PropertyRef Name="KullanıcıAdı" />
+      </Principal>
+      <Dependent Role="Kullanıcı_ilan">
+        <PropertyRef Name="KullanıcıAdı" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ikincielotoModelStoreContainer">
+    <EntitySet Name="İlanlar" EntityType="Self.İlanlar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanıcı_ilan" EntityType="Self.Kullanıcı_ilan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanıcılar" EntityType="Self.Kullanıcılar" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Kullanıcı_ilan_İlanlar" Association="Self.FK_Kullanıcı_ilan_İlanlar">
+      <End Role="İlanlar" EntitySet="İlanlar" />
+      <End Role="Kullanıcı_ilan" EntitySet="Kullanıcı_ilan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kullanıcı_ilan_Kullanıcılar" Association="Self.FK_Kullanıcı_ilan_Kullanıcılar">
+      <End Role="Kullanıcılar" EntitySet="Kullanıcılar" />
+      <End Role="Kullanıcı_ilan" EntitySet="Kullanıcı_ilan" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

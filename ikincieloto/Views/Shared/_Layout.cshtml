@@ -1,0 +1,95 @@
+﻿@model ikincieloto.ViewModels.İlanlarList
+@using ikincieloto.Models
+@{
+    Layout = null;
+    var gelen = (İlan)ViewData["deneme"];
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+
+        body {
+            background: url('../Images/sezginindenbackground.png') no-repeat center center fixed;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width" />
+
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <nav>
+        <div class="topnav">
+            <a class="active" href="~/Home">ArabaBazarı</a>
+            <a href="~/Post/ilanEkle">İlan Ekle</a>
+
+
+           
+
+            @if (User.Identity.IsAuthenticated)
+            {
+
+
+                <a style="float:right;" href="/Login/Logout"> Çıkış</a>
+
+                <a style="float:right;" href="/Post/ilanlarım/@User.Identity.Name"> @User.Identity.Name</a>
+
+               
+            
+            }
+            else
+            {
+                <a href="~/Login/login">Giris Yap</a>
+                <a href="~/Login/signup">Uye ol</a>
+            }
+        </div>
+    </nav>
+
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+<style type="text/css">
+
+
+    .topnav {
+        background-color: slategrey;
+        overflow: hidden;
+    }
+
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+          
+        }
+
+
+            .topnav a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+
+
+            .topnav a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+</style>

@@ -1,0 +1,69 @@
+﻿@using GridMvc.Html
+@using ikincieloto.Models
+@model ikincieloto.ViewModels.İlanlarList
+
+@{
+    var gelen = (İlan)ViewData["deneme"];
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+<!-- Navbar bootstrap-->
+
+<title>Ana Sayfa</title>
+
+<link href="~/Content/Gridmvc.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+<script src="~/Scripts/gridmvc.min.js"></script>
+<script src="~/Scripts/gridmvc.lang.tr.js"></script>
+
+
+<style>
+    body {
+        background: url('../Images/sezginindenbackground.png') no-repeat center center fixed;
+        background-position: center;
+        background-size: cover;
+    }
+</style>
+
+
+
+
+<div align="center" style="margin-top:10%;">
+    @Html.Grid(Model.İlanlar).Columns(col=>
+{
+
+
+col.Add().Encoded(false).Sanitized(false).RenderValueAs(html => {
+    string htmlStr = "<a href='/Post/Detayli_İlan/"+html.id+" '  class='btn btn-warning'><span class='glyphicon glyphicon-align-justify'></span>  İlan Detayı</a>";
+    return MvcHtmlString.Create(htmlStr);
+}).SetWidth(30);
+
+    
+        col.Add().Encoded(false).Sanitized(false).Titled("Fotoğraf").Filterable(false).RenderValueAs(c => @<div s><img style="width:65px; margin-left:10%;"  src='~/UploadImages/@c.imagepath')" /></div>);
+       
+        col.Add(x => x.Marka).Sortable(true);
+        col.Add(x => x.Modeli).Filterable(true).Sortable(true);
+        col.Add(x => x.Yıl).Filterable(true).Sortable(true);
+        col.Add(x => x.Fiyat).Filterable(true).Sortable(true);
+        col.Add(x => x.Kilometre).Sortable(true);
+        col.Add(x => x.Yakıt).Sortable(true);
+        col.Add(x => x.Renk).Sortable(true);
+        col.Add(x => x.Vites).Sortable(true);
+        col.Add(x => x.ilantarihi).Format("{0:dd.MM.yyyy}").Sortable(true);
+
+
+
+    }).WithPaging(6)
+
+
+ 
+  
+</div>
+
+
+
+
+
+
+

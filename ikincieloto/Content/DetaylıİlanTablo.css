@@ -1,0 +1,18 @@
+﻿body {
+    background: url('../Images/sezginindenbackground.png') no-repeat center center fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+
+
+ul {
+    width: 25%;
+    margin:10%;
+   }
+ 
+   
+span {
+    float: right;
+    padding-left:20%;
+}

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ikincielotoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="İlanlar">
+    <Key>
+      <PropertyRef Name="İlanID" />
+    </Key>
+    <Property Name="İlanID" Type="Int32" Nullable="false" />
+    <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Yıl" Type="Int32" Nullable="false" />
+    <Property Name="Fiyat" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="KM" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Yakıt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Renk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="İlan_Tarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Vites" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Kullanıcılar" Relationship="Self.Kullanıcı_ilan" FromRole="İlanlar" ToRole="Kullanıcılar" />
+  </EntityType>
+  <EntityType Name="Kullanıcılar">
+    <Key>
+      <PropertyRef Name="KullanıcıAdı" />
+    </Key>
+    <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KullanıcıAdı" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Şifre" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cinsiyet" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="İlanlar" Relationship="Self.Kullanıcı_ilan" FromRole="Kullanıcılar" ToRole="İlanlar" />
+  </EntityType>
+  <Association Name="Kullanıcı_ilan">
+    <End Role="İlanlar" Type="Self.İlanlar" Multiplicity="*" />
+    <End Role="Kullanıcılar" Type="Self.Kullanıcılar" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="ikincielotoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="İlanlar" EntityType="Self.İlanlar" />
+    <EntitySet Name="Kullanıcılar" EntityType="Self.Kullanıcılar" />
+    <AssociationSet Name="Kullanıcı_ilan" Association="Self.Kullanıcı_ilan">
+      <End Role="İlanlar" EntitySet="İlanlar" />
+      <End Role="Kullanıcılar" EntitySet="Kullanıcılar" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
